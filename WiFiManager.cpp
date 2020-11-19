@@ -2959,6 +2959,8 @@ void WiFiManager::WiFiEvent(WiFiEvent_t event,system_event_info_t info){
 void WiFiManager::WiFi_autoReconnect(){
   #ifdef ESP8266
     WiFi.setAutoReconnect(_wifiAutoReconnect);
+  #elif defined(CONFIG_IDF_TARGET_ESP32S2)
+    WiFi.setAutoReconnect(_wifiAutoReconnect);
   #elif defined(ESP32)
     // if(_wifiAutoReconnect){
       // @todo move to seperate method, used for event listener now
